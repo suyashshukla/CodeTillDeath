@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="paytm-checksum_2.0 ">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/paytm-checksum_2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

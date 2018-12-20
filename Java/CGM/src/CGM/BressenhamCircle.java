@@ -1,10 +1,10 @@
-package com.company;
+package CGM;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
 
-public class MidPointCircle extends Component {
+public class BressenhamCircle extends Component {
 
     Graphics2D graphic;
 
@@ -22,7 +22,7 @@ public class MidPointCircle extends Component {
 
             System.out.println(xp[i]+ " : "+yp[i]);
 
-            graphic.drawLine(xp[i]+100,yp[i]+100,xp[i]+100,yp[i]+100);
+            graphic.drawLine(xp[i]+150,yp[i]+150,xp[i]+150,yp[i]+150);
 
         }
     }
@@ -34,12 +34,12 @@ public class MidPointCircle extends Component {
         System.out.println("Radius");
         int r = sc.nextInt();
 
-        double po = 1-r;
+        double d0 = 3 - (2*r);
 
         double x = 0;
         double y = r;
 
-        double pk;
+        double dk;
 
         xp = new int[(8*r)+4];
         yp = new int[(8*r)+4];
@@ -59,21 +59,20 @@ public class MidPointCircle extends Component {
         index = 4;
 
 
-        pk = po;
+        dk = d0;
 
-        while(x!=y){
+        while(x<=y){
 
-            System.out.println(x+" : "+y+" : "+pk);
+            System.out.println(x+" : "+y+" : "+dk);
 
-
-            if(pk<0) {
+            if(dk<0) {
                 x = x + 1;
-                y = y - 1;
-                pk = pk + (2 * x) + 1;
+                dk = dk + 4*x + 6;
             }
             else {
                 x = x + 1;
-                pk = pk + (2 * (x - y)) + 1;
+                y = y - 1;
+                dk = dk + 4*(x-y) + 10;
             }
 
             int pointx = (int)x;
@@ -117,16 +116,15 @@ public class MidPointCircle extends Component {
             yp[index+7] = pointx;
 
             index+=8;
-
         }
 
-        int frameWidth = 200;
-        int frameHeight = 200;
+        int frameWidth = 300;
+        int frameHeight = 300;
 
         JFrame frame = new JFrame();
         frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
-        frame.getContentPane().add(new MidPointCircle());
+        frame.getContentPane().add(new BressenhamCircle());
 
     }
 

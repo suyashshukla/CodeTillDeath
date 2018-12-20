@@ -1,10 +1,10 @@
-package com.company;
+package CGM;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
 
-public class Translation extends Component {
+public class Slope extends Component {
 
     Graphics2D graphic;
 
@@ -18,15 +18,10 @@ public class Translation extends Component {
 
         graphic.setColor(Color.BLACK);
 
-        //Original Line
+        for(int i = 0 ; i<100;i++){
+                graphic.drawLine(pt[i][0],pt[i][0],pt[i][1],pt[i][1]);
 
-       graphic.drawLine(p[0][0],p[0][1],p[1][0],p[1][1]);
-
-        //Transalation Line
-
-        graphic.setColor(Color.CYAN);
-
-        graphic.drawLine(pt[0][0],pt[0][1],pt[1][0],pt[1][1]);
+        }
     }
 
     public static void main(String args[]){
@@ -34,7 +29,7 @@ public class Translation extends Component {
         Scanner sc = new Scanner(System.in);
 
         p = new int[2][2];
-        pt= new int[2][2];
+        pt= new int[100][2];
         int t[] = new int [2];
 
         System.out.println("Line Points : ");
@@ -42,20 +37,31 @@ public class Translation extends Component {
         //Input data
         for(int i = 0;i<2;i++){
             for(int j = 0;j<2;j++){
-               p[i][j] = sc.nextInt();
+                p[i][j] = sc.nextInt();
             }
         }
 
-        //Input Translation Factor
-        for(int i = 0;i<2;i++){
-            t[i] = sc.nextInt();
-        }
+        int x1 = p[0][0];
+        int x2 = p[1][0];
 
-        //Translation
-        for(int i = 0;i<2;i++){
-            for(int j = 0;j<2;j++){
-                pt[i][j] = p[i][j] + t[j];
-            }
+        int y1 = p[0][1];
+        int y2 = p[1][1];
+
+        //Slope Calculation
+        double m = (y2-y1)/(x2-x1);
+
+
+int xind = 0; int yind = 0;
+        //Points Calculation
+        for(int i = 1;i<=x2;i++) {
+
+            yind = 0;
+
+            int y = (int)m*(i-x1);
+
+            pt[xind][yind++] = i;
+            pt[xind++][yind] = y;
+
         }
 
         int frameWidth = 300;
@@ -64,7 +70,7 @@ public class Translation extends Component {
         JFrame frame = new JFrame();
         frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
-        frame.getContentPane().add(new Translation());
+        frame.getContentPane().add(new Slope());
 
     }
 

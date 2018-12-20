@@ -1,16 +1,15 @@
-package com.company;
+package CGM;
 
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
-class DDA extends Component{
+class Bressenhams extends Component{
 
     Graphics2D graphic;
 
     static int x[];
     static int y[];
-    static int index;
 
     public void paint(Graphics g){
 
@@ -18,7 +17,7 @@ class DDA extends Component{
 
         graphic.setColor(Color.BLACK);
 
-        for(int i = 0 ;i<index;i++){
+        for(int i = 0 ;i<x.length;i++){
 
             int xabs=0,yabs=0;
             xabs = Math.abs(x[i]);
@@ -43,60 +42,68 @@ class DDA extends Component{
         double x2 = sc.nextDouble();
         double y2 = sc.nextDouble();
 
-        double dy = (y2-y1);
-        double dx = (x2-x1);
+        double dy = Math.abs(y2-y1);
+        double dx = Math.abs(x2-x1);
 
         System.out.println(dx+" "+dy);
 
-        double m = dy/dx;
-
         int step=0;
+        double p;
         boolean dec=true;
 
+        p = 2*dy - dx;
+
         if(dx>=dy){
+
             step = Math.abs((int)dx);
             dec = true;
+
         }
         else if(dx<dy){
             dec = false;
             step = Math.abs((int)dy);
         }
 
+        int xrr[] = new int[step];
 
-
-        int xrr[] = new int[step+2];
-
-        int yrr[] = new int[step+2];
+        int yrr[] = new int[step];
 
         System.out.println(step);
 
         double xk,yk,xi = 0,yi=0;
 
-        index = 0;
+        int index = 0;
 
-        xrr[index] = (int)x1;
-        yrr[index++] = (int)y1;
+        while(x1!=x2 && y1!=y2){
 
-        while(Math.round(x1)!=x2 || Math.round(y1)!=y2){
-
-            if(dec) {
+            if(dec && p<0) {
                 xi = 1;
-                yi = m;
+                yi = 0;
             }
 
-            else{
-                xi = 1/m;
+            else if(dec && p>=0){
+                xi = 1;
                 yi = 1;
             }
 
-if(dx<0 && dy<0){
-    xk = x1 - xi;
-    yk = y1 - yi;
-}
-else {
-    xk = x1 + xi;
-    yk = y1 + yi;
-}
+            else if(!dec && p<0){
+                xi = 0;
+                yi = 1;
+            }
+
+            else if(!dec && p>=0){
+                xi = 1;
+                yi = 1;
+            }
+
+            if(dec && x2<x1 || !dec && x2<x1){
+                xk = x1 - xi;
+                yk = y1 - yi;
+            }
+            else  {
+                xk = x1 + xi;
+                yk = y1 + yi;
+            }
 
 
             xrr[index] = (int)Math.round(xk);
@@ -105,18 +112,26 @@ else {
             System.out.println(xrr[index]+" , "+yrr[index]);
             x1 = xk;
             y1 = yk;
+
+            double po = p;
+
+            double px;
+
+            if(p<0) {
+                px = dec ? -2 * dx : 2 * dy;
+                p = po + px;
+            }
+
+            else if(p>=0) {
+                p = po + 2 * (dy - dx);
+            }
+
             index++;
 
         }
 
-        xrr[index] = (int)x2;
-        yrr[index] = (int)y2;
-
-
         DDA.x = xrr;
         DDA.y = yrr;
-
-
 
         int frameWidth = 300;
         int frameHeight = 300;
@@ -129,4 +144,3 @@ else {
     }
 
 }
-    

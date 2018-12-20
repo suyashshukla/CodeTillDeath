@@ -1,5 +1,5 @@
 
-package com.company;
+package CGM;
 
 class Union{
 

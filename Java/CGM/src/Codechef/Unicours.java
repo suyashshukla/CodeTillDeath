@@ -1,6 +1,5 @@
 package Codechef;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Unicours {
@@ -15,25 +14,18 @@ public class Unicours {
 
             int N = sc.nextInt();
 
-            int courses[] = new int[N];
             int prequisites[] = new int[N];
-            int ans = 0;
+            int ans;
+            int max = 0;
 
-            for(int i = 0;i<N;i++)
+            for(int i = 0;i<N;i++) {
                 prequisites[i] = sc.nextInt();
-
-            for(int i = 0;i<N;i++){
-                int p = prequisites[i];
-                int index = 0;
-                while(p!=0){
-                    courses[index++]++;
-                    p--;
+                if(prequisites[i]>max){
+                    max = prequisites[i];
                 }
             }
 
-            for(int i = 0;i<N;i++)
-                if(courses[i]==0)
-                    ans++;
+            ans = N-max;
 
             System.out.println(ans);
     T--;

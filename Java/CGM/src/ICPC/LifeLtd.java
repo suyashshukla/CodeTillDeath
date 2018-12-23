@@ -1,4 +1,4 @@
-package Codechef;
+package ICPC;
 
 import java.util.Scanner;
 

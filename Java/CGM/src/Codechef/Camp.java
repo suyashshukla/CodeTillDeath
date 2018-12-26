@@ -17,42 +17,40 @@ public class Camp {
             int d[] = new int[D];
             int p[] = new int[D];
 
+
+            int days[] = new int[32];
+
             for(int i = 0;i<D;i++){
                 d[i] = sc.nextInt();
                 p[i] = sc.nextInt();
 
                 if(i!=0)
                     p[i] = p[i] + p[i-1];
+
+                days[d[i]] = p[i];
             }
+
+            int score = 0;
+
+            for(int i= 0 ;i<32;i++){
+                if(days[i] == 0)
+                    days[i] = score;
+                else
+                    score = days[i];
+            }
+
 
             int Q = sc.nextInt();
 
-            int dQ[] = new int[Q];
-            int pQ[] = new int[Q];
+            int dQ,pQ;
 
             for(int i = 0;i<Q;i++){
-                dQ[i] = sc.nextInt();
-                pQ[i] = sc.nextInt();
+                dQ = sc.nextInt();
+                pQ = sc.nextInt();
 
-                int problem = 0;
+                int problem = days[dQ];
 
-                for(int j = 0;j<D;j++){
-                if(d[j]>=dQ[i]) {
-                    if(d[j]>dQ[i])
-                        problem = j!=0?p[j-1]:0;
-                    else
-                        problem = p[j];
-
-                    break;
-                }
-
-                else if(d[j] < dQ[i]){
-                    if(j+1 == D)
-                        problem = p[j];
-                }
-                }
-
-                if(problem>=pQ[i])
+                if(problem>=pQ)
                     System.out.println("Go Camp");
                 else
                     System.out.println("Go Sleep");

@@ -1,6 +1,7 @@
 package Codechef;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ChefCode {
@@ -17,6 +18,8 @@ public class ChefCode {
         for(int i = 0 ;i<N;i++){
             arr[i] = sc.nextLong();
         }
+
+        Arrays.sort(arr);
 
         BigInteger product = BigInteger.ONE;
         long count = 0;

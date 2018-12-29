@@ -7,8 +7,6 @@ public class Reduction {
 
     public static void min(int arr[]){
 
-
-
     }
 
     public static void main(String args[]) {

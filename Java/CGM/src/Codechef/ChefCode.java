@@ -26,10 +26,30 @@ public class ChefCode {
 
         int size = (int)Math.pow(2,N)-1;
 
+        boolean flag = false;
+
         for(int i = 1;i<=size;i++){
+
             for(int j = 0;j<N;j++){
-                if(BigInteger.valueOf(i).testBit(j))
+
+                if(arr[j]>K)
+                    continue;
+
+                if(BigInteger.valueOf(i).testBit(j)) {
                     product = product.multiply(BigInteger.valueOf(arr[j]));
+                                    }
+
+                                    if(product.compareTo(BigInteger.valueOf(K))>0){
+                    flag = true;
+                    break;
+                                    }
+
+            }
+
+            if(flag){
+                product = BigInteger.ONE;
+                flag = false;
+                continue;
             }
 
             if(product.compareTo(BigInteger.valueOf(K))<=0) {

@@ -34,7 +34,8 @@ public class StackOps {
                     }
                 }
 
-                catch (Exception e){
+                catch (StackOverflowError e){
+                    System.out.println(e.getMessage());
                     flag = false;
                 }
 

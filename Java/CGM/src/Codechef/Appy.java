@@ -21,10 +21,6 @@ public class Appy {
 
         int T = Integer.parseInt(br.readLine());
 
-        while(T!=0){
-
-            System.out.println("hello");
-        }
 
 
 

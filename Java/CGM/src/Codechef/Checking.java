@@ -12,6 +12,8 @@ public class Checking {
 
         Checking checking = new Checking();
 
+        System.out.println(Long.parseLong("-985632"));
+
         for(checking.r(); checking.r() != 0; checking.r())
         System.out.print(checking.r());
 

@@ -2,7 +2,6 @@ package PPL;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Read extends Thread {

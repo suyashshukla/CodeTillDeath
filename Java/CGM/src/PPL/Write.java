@@ -15,6 +15,8 @@ public class Write extends Thread {
 
             fw.write("\nI am writing on this file "+new Date().toString()+"\n");
             fw.close();
+            Main.s = 1;
+            System.out.println("Writing Ends!");
 
         }
         catch (IOException e) {

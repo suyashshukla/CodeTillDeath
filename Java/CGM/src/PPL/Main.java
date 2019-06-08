@@ -4,15 +4,18 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
 
-    public static void main(String args[]){
+    static int s = 0;
+
+    public static void main(String []args){
 
         Read r = new Read();
         Write w = new Write();
 
-        System.out.print("Reading Starts : ");
-        r.run();
-        System.out.print("\t\t\t\t\t\t\t\t\t\tWriting Starts : ");
+        System.out.println("Writing Starts..");
         w.run();
+
+        System.out.println("Reading Starts..");
+        r.run();
 
     }
 }

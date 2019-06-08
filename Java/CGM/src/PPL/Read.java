@@ -11,15 +11,17 @@ public class Read extends Thread {
         super.run();
 
         try {
-sleep(10000);
+            while(Main.s!=1);
             FileReader fr = new FileReader("D://PPL//thread.txt");
 
             Scanner sc = new Scanner(fr);
-            System.out.println();
             while (sc.hasNext())
-            System.out.println(sc.next()+" ");
+            System.out.print(sc.next()+" ");
+
+            System.out.println();
+            System.out.println("Reading Ends!");
         }
-        catch (FileNotFoundException | InterruptedException e) {
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

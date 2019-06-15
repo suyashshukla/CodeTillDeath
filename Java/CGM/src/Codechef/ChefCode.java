@@ -28,19 +28,10 @@ public class ChefCode {
 
         }
 
-        boolean one = arrayList.indexOf(1L)>=0;
-        boolean two = arrayList.indexOf(2L)>=0;
-        boolean three = arrayList.indexOf(3L)>=0;
-        boolean four = arrayList.indexOf(4L)>=0;
-        boolean five = arrayList.indexOf(5L)>=0;
-        boolean six = arrayList.indexOf(6L)>=0;
-        boolean seven = arrayList.indexOf(7L)>=0;
-
-
         BigInteger product = BigInteger.ONE;
 
 
-        int size = (int) Math.pow(2, arrayList.size()) - 1;
+        int size = ((int) Math.pow(2, arrayList.size()) - 1)/2;
 
         boolean flag = false;
 
